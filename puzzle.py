@@ -45,3 +45,23 @@ def validate_board(board: list) -> bool:
         col_list.append(col)
     for row in board:
         row_list.append(row)
+    k = 4
+    for i in range(4, 9):
+        block = row_list[i][k:k+5]
+        block_list_1.append(block)
+        k-=1
+    p = 4
+    block_list_2 =[]
+    for i in range(0, 5):
+        block_2 = col_list[i][p:p+4]
+        block_list_2.append(block_2)
+        p -= 1
+    block_list_1 = list(reversed(block_list_1))
+    block_list = [j + i for i, j in zip(block_list_1, block_list_2)]
+    for block in block_list:
+        if not is_different(block):
+            return False
+    return True
+if __name__ == "__main__":
+    import doctest
+    print(doctest.testmod())
