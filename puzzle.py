@@ -17,3 +17,23 @@ def is_different(case: str) -> bool:
         if i.isdigit():
             numbers.append(i)
     return len(numbers) == len(set(numbers))
+def validate_board(board: list) -> bool:
+    """
+    Function checks whether it has the same numbers 
+    in one line, column or block.
+    >>> validate_board(["**** ****", "***1 ****", "**  3****", \
+"* 4 1****", "     9 5 ", " 6  83  *", \
+"3   1  **", "  8  2***", "  2  ****"])
+    False
+    >>> validate_board(["**** ****", "***1 ****", "**  3****", \
+"* 4 1****", "     9 5 ", " 6  83  *", \
+"3   7  **", "  8  2***", "  2  ****"])
+    True
+    """
+    for row in board:
+        if not is_different(row):
+            return False
+    for column in range(9):
+        col = ''.join([board[row][column] for row in range(9)])
+        if not is_different(col):
+            return False
