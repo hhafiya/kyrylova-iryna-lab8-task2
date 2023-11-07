@@ -37,3 +37,11 @@ def validate_board(board: list) -> bool:
         col = ''.join([board[row][column] for row in range(9)])
         if not is_different(col):
             return False
+    col_list = []
+    row_list = []
+    block_list_1 = []
+    for column in range(9):
+        col = ''.join([board[row][column] for row in range(9)])
+        col_list.append(col)
+    for row in board:
+        row_list.append(row)
